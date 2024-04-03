@@ -14,4 +14,13 @@ internal interface SbsNewsService {
         @Query("plink")
         plink: String = "RSSREADER",
     ): Response<NewsRss>
+
+    @GET("news/SectionRssFeed.do")
+    suspend fun getNews2(
+        @Query("sectionId")
+        sectionId: String = "02",
+
+        @Query("plink")
+        plink: String = "RSSREADER",
+    ): NewsRss
 }

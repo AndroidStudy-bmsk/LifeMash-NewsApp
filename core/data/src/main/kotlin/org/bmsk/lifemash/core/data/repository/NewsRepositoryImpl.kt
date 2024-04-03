@@ -24,6 +24,10 @@ internal class NewsRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getSbsNews2(section: SbsSection): List<NewsModel> {
+        return (newsClient.getSbsNews2(section).channel.items ?: emptyList()).asDomain()
+    }
+
     override suspend fun getGoogleNews(query: String): Flow<List<NewsModel>> {
         return flow {
             val response = newsClient.getGoogleNews(query)
